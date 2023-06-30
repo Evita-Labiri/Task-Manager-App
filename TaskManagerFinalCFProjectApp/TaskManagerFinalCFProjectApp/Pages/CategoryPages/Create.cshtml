@@ -1,0 +1,22 @@
+﻿@page
+@model TaskManagerFinalCFProjectApp.Pages.CategoryPages.CreateModel
+@{
+}
+<form method="POST" asp-page-handler="Create">
+    <div class="row mb-3">
+        <label for="task" class="col-md-1 col-form-label">Category Name</label>
+        <div>
+            <input type="text" class="form-control" name="categoryName"
+                   id="categoryName" placeholder="Enter Category Name" value="@Model.CategoryDto!.CategoryName" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="offset-md-1 col-md-3 d-grid">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="offset-md-1 col-md-3 d-grid">
+            <button type="button" onclick="location.href='/CategoryPages/Index'" class="btn btn-secondary">Cancel</button>
+
+        </div>
+    </div>
+</form>

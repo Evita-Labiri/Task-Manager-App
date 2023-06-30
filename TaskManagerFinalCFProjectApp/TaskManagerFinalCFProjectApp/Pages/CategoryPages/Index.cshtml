@@ -1,0 +1,31 @@
+﻿@page
+@model TaskManagerFinalCFProjectApp.Pages.CategoryPages.IndexModel
+@{
+}
+<h2>List of Categories</h2>
+<a class="btn btn-success btn-sm" href="/CategoryPages/Create">New Category</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Category Name</th>            
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model?.categories?.Count != 0)
+        {
+            @foreach (var category in Model!.categories!)
+            {
+                <tr>
+                    <td>@category.Id</td>
+                    <td>@category.CategoryName</td>
+                    
+                    <td>
+                        <a class="btn btn-primary btn-sm" href="/CategoryPages/Update?id=@category.Id">Edit</a>
+                        <a class="btn btn-danger btn-sm" href="/CategoryPages/Delete?id=@category.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

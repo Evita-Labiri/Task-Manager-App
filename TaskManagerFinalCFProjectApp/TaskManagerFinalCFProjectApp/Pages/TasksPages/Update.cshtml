@@ -1,0 +1,79 @@
+﻿@page
+@using TaskManagerFinalCFProjectApp.Model;
+@model TaskManagerFinalCFProjectApp.Pages.TasksPages.UpdateModel
+@{
+}
+<h2 class="mb-3">New Task</h2>
+
+<form method="POST" asp-page-handler="Update">
+    <input type="hidden" name="id" value="@Model.TaskDto!.Id" />
+    <div class="row mb-3">
+        <label for="task" class="col-md-1 col-form-label">Task</label>
+        <div>
+            <input type="text" class="form-control" name="taskName"
+                   id="taskName" placeholder="Enter Task" value="@Model.TaskDto.TaskName" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="description" class="col-md-1 col-form-label">Description</label>
+        <div>
+            <input type="text" class="form-control" name="description"
+                   id="description" placeholder="Enter Description" value="@Model.TaskDto.Description" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="dueDate" class="col-md-2 col-form-label">Due Date</label>
+        <div>
+            <input type="date" class="form-control" name="dueDate"
+                   id="dueDate" placeholder="Enter Due Date" value="@Model.TaskDto.DueDate?.ToString("yyyy-MM-dd")" />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="category" class="col-md-1 col-form-label">Category</label>
+        <div>
+            <select class="form-select" name="category" id="category">
+                <option value="">Select Category</option>
+                @foreach (var category in Model.Categories!)
+                {
+                    //<option value="@category.Id"@(category.Id == Model.TaskDto.CategoryId ? "selected" : "")>@category.CategoryName</option>
+                        if (category.Id == Model.TaskDto.CategoryId)
+                        {
+                        <option value="@category.Id" selected>@category.CategoryName</option>
+                        }
+                        else
+                        {
+                        <option value="@category.Id">@category.CategoryName</option>
+                        }
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label for="status" class="col-md-1 col-form-label">Status</label>
+        <div>
+            <select class="form-select" name="status" id="status">
+                <option value="">Select Status</option>
+                @foreach (var status in Enum.GetValues(typeof(TasksStatus)))
+                {
+                    //<option value="@status.ToString()" @(status == Model.TaskDto.Status ? "selected" : "")>@status</option>
+                        if (status.Equals( Model.TaskDto.Status))
+                        {
+                        <option value="@status.ToString()" selected>@status</option>
+                        }
+                        else
+                        {
+                        <option value="@status.ToString()">@status</option>
+                        }
+                }
+            </select>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="offset-md-1 col-md-3 d-grid">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="offset-md-1 col-md-3 d-grid">
+            <button type="button" onclick="location.href='/TasksPages/Index'" class="btn btn-secondary">Cancel</button>
+        </div>
+    </div>
+</form>

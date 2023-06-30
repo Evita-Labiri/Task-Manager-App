@@ -1,0 +1,29 @@
+﻿.flex-container {
+    display: flex;
+    flex-direction: column; 
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #fff; 
+}
+
+.text-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #007bff;
+    color: #fff;
+}
+
+h1.display-4 {
+    margin-top: 0;
+    margin-bottom: 5rem;
+}
+
+p {
+    margin-bottom: 5rem;
+}
